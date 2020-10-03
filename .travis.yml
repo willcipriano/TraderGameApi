@@ -3,5 +3,8 @@ language: minimal
 services:
   - docker
 
-script:
+before_script:
   - docker-compose up
+
+script:
+  - docker build .
