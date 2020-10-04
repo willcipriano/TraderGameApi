@@ -5,8 +5,8 @@ databaseChangeLog:
     author: wcipriano
     changes:
       - sql:
-          sql: CREATE TYPE COMMODITY_UNIT as ENUM ('BUSHEL', 'TON', 'TONNE', 'SHORT_TON', 'CENTUM', 'POUND', 'KILOGRAM', 'GALLON', 'THERM', 'BARREL')
-          dbms: 'postgresql'
+            sql: CREATE TYPE COMMODITY_UNIT as ENUM ('BUSHEL', 'TON', 'TONNE', 'SHORT_TON', 'CENTUM', 'POUND', 'KILOGRAM', 'GALLON', 'THERM', 'BARREL')
+            dbms: 'postgresql'
       - createTable:
           tableName: test
           columns:
