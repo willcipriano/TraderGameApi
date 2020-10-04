@@ -1,0 +1,13 @@
+
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://db:5432/trader
+    username: root
+    password: root
+    driverClassName: org.postgresql.Driver
