@@ -1,4 +1,4 @@
-#Trader API 
+# Trader API 
 
 ## Building and running
 With Docker and Make installed all you should have to do to run the tests and then application is:
