@@ -21,3 +21,11 @@ spring:
       hibernate:
         ddl-auto: create
 
+---
+
+spring:
+  profiles: local
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/trader
+
