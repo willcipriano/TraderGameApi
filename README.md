@@ -9,7 +9,15 @@ To only run the tests you can use:
 ```
 make test
 ```
-To clean up run:
+To rebuild the project:
+```
+make build
+```
+To clean up:
 ```
 make clean
+```
+To stop everything:
+```
+make stop
 ```
