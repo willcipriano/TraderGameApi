@@ -1,4 +1,4 @@
-package com.wcipriano.TraderAPI;
+package rest.trader.TraderAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

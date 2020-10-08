@@ -1,4 +1,4 @@
-package com.wcipriano.TraderAPI.exceptions;
+package rest.trader.TraderAPI.exceptions;
 
 public class CommodityUnitPluralNameNotFoundException extends Exception{
     public CommodityUnitPluralNameNotFoundException(String errorMessage) {

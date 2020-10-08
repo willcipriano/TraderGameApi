@@ -19,15 +19,6 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        ddl-auto: create-drop
-        jdbc:
-          lob:
-            non_contextual_creation: true
-    database: POSTGRESQL
-    hibernate:
-      ddl-auto: create-drop
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    open-in-view: false
-    generate-ddl: false
+        ddl-auto: create
 
 

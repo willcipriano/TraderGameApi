@@ -1,4 +1,4 @@
-package com.wcipriano.TraderAPI;
+package rest.trader.TraderAPI;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
