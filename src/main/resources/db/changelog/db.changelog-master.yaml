@@ -1,19 +1,8 @@
 databaseChangeLog:
-  - changeSet:
-      id: 1
-      author: wcipriano
-      changes:
-        - createTable:
-            tableName: asset
-            columns:
-              - column:
-                  name: uuid
-                  type: uuid
-                  constraints:
-                    primaryKey: true
-              - column:
-                  name: commodity_id
-                  type: uuid
-                  constraints:
-                    nullable: false
+  - include:
+      file: db/changelog/tables/db.create-commodity-type-table.yaml
+  - include:
+      file: db/changelog/tables/db.create-commodity-table.yaml
+  - include:
+      file: db/changelog/tables/db.create-asset-table.yaml
 

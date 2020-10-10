@@ -4,7 +4,7 @@ databaseChangeLog:
       author: wcipriano
       changes:
         - createTable:
-            tableName: asset
+            tableName: commodity
             columns:
               - column:
                   name: uuid
@@ -16,6 +16,7 @@ databaseChangeLog:
                   type: uuid
                   constraints:
                     nullable: false
+                    foreignKeyName: commodity_type_fk
                     references: commodity_type(uuid)
               - column:
                   name: name
