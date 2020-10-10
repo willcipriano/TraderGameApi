@@ -9,8 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.UUID;
 
-@Data
 @Entity
+@Data
 public class CommodityType {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -18,7 +18,7 @@ public class CommodityType {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    private UUID id;
+    private UUID uuid;
 
     @Column
     private String name;
