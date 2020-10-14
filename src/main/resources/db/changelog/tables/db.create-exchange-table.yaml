@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_exchange_table
+      author: wcipriano
+      changes:
+        - createTable:
+            tableName: exchange
+            columns:
+              - column:
+                  name: uuid
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar
+                  constraints:
+                    nullable: false
+

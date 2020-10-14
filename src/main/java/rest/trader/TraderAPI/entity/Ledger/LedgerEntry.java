@@ -1,11 +1,14 @@
 package rest.trader.TraderAPI.entity.Ledger;
 
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import rest.trader.TraderAPI.entity.Company.Company;
 
 import javax.persistence.*;
 import java.util.UUID;
 
+@Data
+@Entity
 public class LedgerEntry {
     @Id
     @GeneratedValue(generator = "UUID")

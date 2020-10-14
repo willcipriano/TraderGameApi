@@ -5,4 +5,10 @@ databaseChangeLog:
       file: db/changelog/tables/db.create-commodity-table.yaml
   - include:
       file: db/changelog/tables/db.create-asset-table.yaml
+  - include:
+      file: db/changelog/tables/db.create-company-table.yaml
+  - include:
+      file: db/changelog/tables/db.create-ledger-table.yaml
+  - include:
+      file: db/changelog/tables/db.create-ledger-entry-table.yaml
 

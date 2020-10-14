@@ -21,4 +21,7 @@ public class Ledger {
     @ManyToOne
     @JoinColumn(name="company_id")
     private Company company;
+
+    @Column
+    private Integer balance;
 }

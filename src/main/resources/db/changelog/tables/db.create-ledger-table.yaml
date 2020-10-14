@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_ledger_table
+      author: wcipriano
+      changes:
+        - createTable:
+            tableName: ledger
+            columns:
+              - column:
+                  name: uuid
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: company_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+
