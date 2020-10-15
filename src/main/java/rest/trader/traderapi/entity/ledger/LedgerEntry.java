@@ -1,8 +1,8 @@
-package rest.trader.traderapi.entity.Ledger;
+package rest.trader.traderapi.entity.ledger;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
-import rest.trader.traderapi.entity.Company.Company;
+import rest.trader.traderapi.entity.company.Company;
 
 import javax.persistence.*;
 import java.util.UUID;

@@ -1,16 +1,18 @@
-package rest.trader.traderapi.entity.Exchange;
+package rest.trader.traderapi.entity.company;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.UUID;
 
+
 @Entity
 @Data
-public class Exchange {
+public class Company {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -19,5 +21,6 @@ public class Exchange {
     )
     private UUID uuid;
 
+    @Column
     private String name;
 }

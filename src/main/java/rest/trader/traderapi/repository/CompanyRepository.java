@@ -2,7 +2,7 @@ package rest.trader.traderapi.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import rest.trader.traderapi.entity.Company.Company;
+import rest.trader.traderapi.entity.company.Company;
 
 import java.util.UUID;
 
