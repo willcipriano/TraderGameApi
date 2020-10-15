@@ -1,8 +1,8 @@
-package rest.trader.traderApi.repository;
+package rest.trader.traderapi.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import rest.trader.traderApi.entity.Asset.Asset;
+import rest.trader.traderapi.entity.Asset.Asset;
 
 import java.util.UUID;
 

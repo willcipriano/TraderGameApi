@@ -1,6 +1,6 @@
-package rest.trader.traderApi.repository;
+package rest.trader.traderapi.repository;
 
-import rest.trader.traderApi.entity.Commodity.CommodityType;
+import rest.trader.traderapi.entity.Commodity.CommodityType;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

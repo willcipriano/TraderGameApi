@@ -1,7 +1,7 @@
-package rest.trader.traderApi.repository;
+package rest.trader.traderapi.repository;
 
-import rest.trader.traderApi.entity.Commodity.Commodity;
-import rest.trader.traderApi.entity.Commodity.CommodityType;
+import rest.trader.traderapi.entity.Commodity.Commodity;
+import rest.trader.traderapi.entity.Commodity.CommodityType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,11 +1,11 @@
-package rest.trader.traderApi.entity.Asset;
+package rest.trader.traderapi.entity.Asset;
 
 import javax.persistence.*;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
-import rest.trader.traderApi.entity.Commodity.Commodity;
-import rest.trader.traderApi.entity.Company.Company;
+import rest.trader.traderapi.entity.Commodity.Commodity;
+import rest.trader.traderapi.entity.Company.Company;
 
 import java.util.UUID;
 
