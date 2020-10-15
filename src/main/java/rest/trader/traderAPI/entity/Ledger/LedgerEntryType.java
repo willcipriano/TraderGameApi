@@ -1,4 +1,4 @@
-package rest.trader.TraderAPI.entity.Ledger;
+package rest.trader.traderAPI.entity.Ledger;
 
 public enum LedgerEntryType {
     CREDIT,

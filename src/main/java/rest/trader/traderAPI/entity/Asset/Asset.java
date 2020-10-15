@@ -1,15 +1,17 @@
-package rest.trader.TraderAPI.entity.Ledger;
+package rest.trader.traderAPI.entity.Asset;
+
+import javax.persistence.*;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
-import rest.trader.TraderAPI.entity.Company.Company;
+import rest.trader.traderAPI.entity.Commodity.Commodity;
+import rest.trader.traderAPI.entity.Company.Company;
 
-import javax.persistence.*;
 import java.util.UUID;
 
-@Data
 @Entity
-public class LedgerEntry {
+@Data
+public class Asset {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -18,17 +20,14 @@ public class LedgerEntry {
     )
     private UUID uuid;
 
-    @Column
-    private LedgerEntryType type;
+    @ManyToOne
+    @JoinColumn(name="commodity_id")
+    private Commodity commodity;
 
     @ManyToOne
     @JoinColumn(name="company_id")
     private Company company;
 
-    @ManyToOne
-    @JoinColumn(name = "ledger_id")
-    private Ledger ledger;
-
     @Column
-    private Integer amount;
+    private Integer count;
 }

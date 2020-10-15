@@ -1,4 +1,4 @@
-package rest.trader.TraderAPI;
+package rest.trader.traderAPI;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
