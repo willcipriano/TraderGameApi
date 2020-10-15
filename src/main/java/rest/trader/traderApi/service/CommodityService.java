@@ -1,4 +1,4 @@
-package rest.trader.traderAPI.service;
+package rest.trader.traderApi.service;
 
 import org.springframework.stereotype.Service;
 

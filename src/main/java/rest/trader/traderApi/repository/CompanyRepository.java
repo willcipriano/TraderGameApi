@@ -1,8 +1,8 @@
-package rest.trader.traderAPI.repository;
+package rest.trader.traderApi.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import rest.trader.traderAPI.entity.Company.Company;
+import rest.trader.traderApi.entity.Company.Company;
 
 import java.util.UUID;
 

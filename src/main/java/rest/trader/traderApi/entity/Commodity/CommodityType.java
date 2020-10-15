@@ -1,4 +1,4 @@
-package rest.trader.traderAPI.entity.Commodity;
+package rest.trader.traderApi.entity.Commodity;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;

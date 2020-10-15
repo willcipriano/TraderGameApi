@@ -1,4 +1,4 @@
-package rest.trader.traderAPI.controller;
+package rest.trader.traderApi.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
