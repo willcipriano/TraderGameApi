@@ -1,33 +1,39 @@
 package rest.trader.traderapi.repository;
 
-import rest.trader.traderapi.entity.commodity.Commodity;
-import rest.trader.traderapi.entity.commodity.CommodityType;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import rest.trader.traderapi.entity.commodity.Commodity;
+import rest.trader.traderapi.entity.commodity.CommodityType;
+import rest.trader.traderapi.BaseTraderTest;
 
 import javax.transaction.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-class CommodityRepositoryTest {
+class CommodityRepositoryTest extends BaseTraderTest {
 
     @Autowired
     CommodityRepository commodityRepository;
 
+    private void createCommodity() {
+        CommodityType commodityType = createFakeCommodityType();
+
+        Commodity commodity = new Commodity();
+        commodity.setName("Fake Commodity");
+        commodity.setDescription("This is a fake entry");
+        commodity.setType(commodityType);
+
+        commodityRepository.save(commodity);
+    }
+
     @Test
     @Transactional
-    void saveTest() {
-        CommodityType saveMeType = new CommodityType();
-        saveMeType.setName("fake type");
-        saveMeType.setDescription("fake description");
-
-        Commodity saveMe = new Commodity();
-        saveMe.setName("fake name");
-        saveMe.setDescription("fake description");
-
-        commodityRepository.save(saveMe);
-        assertThat(saveMe.getName()).isEqualTo("fake name");
+    void findByName() {
+        createCommodity();
+        Commodity result = commodityRepository.findByName("Fake Commodity");
+        assertThat(result.getDescription()).isEqualTo("This is a fake entry");
     }
 }
