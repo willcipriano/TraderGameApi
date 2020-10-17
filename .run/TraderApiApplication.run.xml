@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TraderApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="traderapi" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="rest.trader.traderapi.TraderApiApplication" />
+    <option name="VM_PARAMETERS" value="-Dspring.profiles.active=local" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
