@@ -14,10 +14,7 @@ import java.util.UUID;
 public class CommodityType {
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID uuid;
 
     @Column
@@ -26,4 +23,3 @@ public class CommodityType {
     @Column
     private String description;
 }
-

@@ -1,6 +1,5 @@
 package rest.trader.traderapi.repository;
 
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -43,6 +42,5 @@ class CommodityRepositoryTest extends BaseTraderTest {
         createCommodity();
         Commodity result = commodityRepository.findByDescription("This is a fake entry");
         assertThat(result.getName()).isEqualTo("Fake Commodity");
-
     }
 }

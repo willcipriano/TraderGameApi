@@ -14,18 +14,15 @@ import java.util.UUID;
 public class Asset {
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID uuid;
 
     @ManyToOne
-    @JoinColumn(name="commodity_id")
+    @JoinColumn(name = "commodity_id")
     private Commodity commodity;
 
     @ManyToOne
-    @JoinColumn(name="company_id")
+    @JoinColumn(name = "company_id")
     private Company company;
 
     @Column

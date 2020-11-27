@@ -6,7 +6,6 @@ import rest.trader.traderapi.entity.commodity.Commodity;
 import rest.trader.traderapi.entity.commodity.CommodityType;
 import rest.trader.traderapi.repository.*;
 
-
 public class BaseTraderTest {
 
     @Autowired
@@ -31,12 +30,10 @@ public class BaseTraderTest {
     LedgerRepository ledgerRepository;
 
     private static String randomString(Integer minLength, Integer maxLength) {
-        return new RandomStringGenerator.Builder()
-                .withinRange('a', 'z').build()
-                .generate(minLength, maxLength);
+        return new RandomStringGenerator.Builder().withinRange('a', 'z').build().generate(minLength, maxLength);
     }
 
-    public CommodityType createCommodityType(String name, String description){
+    public CommodityType createCommodityType(String name, String description) {
         CommodityType newCommodityType = new CommodityType();
         newCommodityType.setName(name);
         newCommodityType.setDescription(description);
@@ -51,11 +48,11 @@ public class BaseTraderTest {
         return commodityRepository.save(newCommodity);
     }
 
-    public CommodityType createFakeCommodityType(){
+    public CommodityType createFakeCommodityType() {
         return createCommodityType(randomString(8, 10), randomString(10, 35));
     }
 
-    public Commodity createFakeCommodity(){
+    public Commodity createFakeCommodity() {
         return createCommodity(createFakeCommodityType(), randomString(5, 15), randomString(10, 35));
     }
 

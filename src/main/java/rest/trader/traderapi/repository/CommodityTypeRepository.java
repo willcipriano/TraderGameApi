@@ -8,4 +8,7 @@ import java.util.UUID;
 
 @Repository
 public interface CommodityTypeRepository extends CrudRepository<CommodityType, UUID> {
+    CommodityType findByName(String name);
+
+    CommodityType findByDescription(String description);
 }
