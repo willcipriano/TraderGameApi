@@ -13,6 +13,6 @@ public class MapperConfiguration {
     Mapper<Commodity, CommodityDTO> commodityDTOCommodityMapper() {
         return Mapping.from(Commodity.class).to(CommodityDTO.class).omitInDestination(CommodityDTO::getDtoClass)
                 .omitInSource(Commodity::getType).reassign(Commodity::getCommodityTypeUUID)
-                .to(CommodityDTO::getTypeUUID).mapper();
+                .to(CommodityDTO::getCommodityTypeUUID).omitInDestination(CommodityDTO::getLastFetched).mapper();
     }
 }

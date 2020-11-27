@@ -6,15 +6,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rest.trader.traderapi.dto.CommodityDTO;
-import rest.trader.traderapi.entity.commodity.Commodity;
 import rest.trader.traderapi.service.CommodityService;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/commodity")
 public class CommodityController {
-
     CommodityService service;
 
     @Autowired
@@ -24,17 +23,19 @@ public class CommodityController {
 
     @GetMapping(path = "/example")
     public CommodityDTO getCommodity() {
-        return service.toCommodityDTO(service.getExampleCommodity());
+        CommodityDTO result = service.toCommodityDTO(service.getExampleCommodity());
+        result.setLastFetched(LocalDateTime.now());
+        return result;
     }
 
     @GetMapping(path = "/uuid/{uuid}")
-    public Commodity getCommodityByUUID(@PathVariable UUID uuid) {
-        return service.getCommodityByUUID(uuid);
+    public CommodityDTO getCommodityByUUID(@PathVariable UUID uuid) {
+        return service.toCommodityDTO(service.getCommodityByUUID(uuid));
     }
 
     @GetMapping(path = "/name/{name}")
-    public Commodity getCommodityByName(@PathVariable String name) {
-        return service.getCommodityByName(name);
+    public CommodityDTO getCommodityByName(@PathVariable String name) {
+        return service.toCommodityDTO(service.getCommodityByName(name));
     }
 
 }
