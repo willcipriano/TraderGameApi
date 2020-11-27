@@ -1,11 +1,16 @@
 package rest.trader.traderapi.service;
 
+import com.remondis.remap.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.Mapping;
+import rest.trader.traderapi.dto.CommodityDTO;
 import rest.trader.traderapi.entity.commodity.Commodity;
 import rest.trader.traderapi.entity.commodity.CommodityType;
 import rest.trader.traderapi.exception.CommodityNotFoundException;
 import rest.trader.traderapi.repository.CommodityRepository;
+import springfox.documentation.swagger2.mappers.ModelMapper;
+import springfox.documentation.swagger2.mappers.ModelSpecificationMapper;
 
 import java.util.UUID;
 
@@ -13,10 +18,12 @@ import java.util.UUID;
 public class CommodityService {
 
     CommodityRepository repository;
+    Mapper<Commodity, CommodityDTO> toDtoMapper;
 
     @Autowired
-    public CommodityService(CommodityRepository commodityRepository) {
+    public CommodityService(CommodityRepository commodityRepository, Mapper<Commodity, CommodityDTO> toDtoMapper) {
         this.repository = commodityRepository;
+        this.toDtoMapper = toDtoMapper;
     }
 
     public Commodity getCommodityByUUID(UUID uuid) throws CommodityNotFoundException {
@@ -52,4 +59,7 @@ public class CommodityService {
         return result;
     }
 
+    public CommodityDTO toCommodityDTO(Commodity commodity) {
+        return toDtoMapper.map(commodity);
+    }
 }

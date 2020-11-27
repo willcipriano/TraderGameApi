@@ -4,6 +4,7 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -24,4 +25,10 @@ public class Commodity {
     @Column(nullable = false)
     private String description;
 
+    public UUID getCommodityTypeUUID() {
+        if (Objects.nonNull(this.type)) {
+            return this.type.getUuid();
+        }
+        return null;
+    }
 }

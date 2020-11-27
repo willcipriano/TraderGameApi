@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import rest.trader.traderapi.dto.CommodityDTO;
 import rest.trader.traderapi.entity.commodity.Commodity;
 import rest.trader.traderapi.service.CommodityService;
 
@@ -22,8 +23,8 @@ public class CommodityController {
     }
 
     @GetMapping(path = "/example")
-    public Commodity getCommodity() {
-        return service.getExampleCommodity();
+    public CommodityDTO getCommodity() {
+        return service.toCommodityDTO(service.getExampleCommodity());
     }
 
     @GetMapping(path = "/uuid/{uuid}")
