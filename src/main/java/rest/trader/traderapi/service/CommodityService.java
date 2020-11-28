@@ -9,6 +9,7 @@ import rest.trader.traderapi.dto.CommodityDTO;
 import rest.trader.traderapi.entity.commodity.Commodity;
 import rest.trader.traderapi.entity.commodity.CommodityType;
 import rest.trader.traderapi.exception.CommodityNotFoundException;
+import rest.trader.traderapi.exception.CommodityTypeNotFoundException;
 import rest.trader.traderapi.repository.CommodityRepository;
 
 import java.util.ArrayList;
@@ -89,14 +90,13 @@ public class CommodityService {
     public void saveOrUpdate(Commodity commodity) {
         Commodity result = repository.findByName(commodity.getName());
         if (result == null) {
-            commodityTypeService.saveOrUpdate(commodity.getType());
+            try {
+                CommodityType commodityType = commodityTypeService.getByName(commodity.getType().getName());
+            } catch (CommodityTypeNotFoundException ex) {
+                commodityTypeService.saveOrUpdate(commodity.getType());
+            }
             repository.save(commodity);
         } else {
-            if (!result.getType().getName().equals(commodity.getType().getName())) {
-                commodityTypeService.saveOrUpdate(commodity.getType());
-                result.setType(commodity.getType());
-            }
-            result.setName(commodity.getName());
             result.setDescription(commodity.getDescription());
             repository.save(result);
         }

@@ -103,7 +103,7 @@ public class CommodityController {
                 .body(errorDTO);
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping( method = RequestMethod.GET, produces = "application/json")
     @ApiOperation(value = "Get a list of commodities.", response = CommodityDTO.class, responseContainer = "List")
     public ResponseEntity<List<CommodityDTO>> getCommodities(Pageable pageable) {
         Page<Commodity> results = service.findAll(pageable);

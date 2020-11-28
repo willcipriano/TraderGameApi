@@ -1,30 +1,26 @@
 package rest.trader.traderapi.utility;
 
 import org.springframework.stereotype.Service;
-import rest.trader.traderapi.dto.ApiErrorDTO;
 import rest.trader.traderapi.dto.dev.UniverseSeedDTO;
 import rest.trader.traderapi.entity.Universe;
 import rest.trader.traderapi.entity.commodity.Commodity;
 import rest.trader.traderapi.entity.commodity.CommodityType;
 import rest.trader.traderapi.exception.UniverseNotFoundException;
-import rest.trader.traderapi.repository.CommodityRepository;
-import rest.trader.traderapi.repository.CommodityTypeRepository;
 import rest.trader.traderapi.service.CommodityService;
 import rest.trader.traderapi.service.CommodityTypeService;
 import rest.trader.traderapi.service.UniverseService;
 
-import javax.transaction.Transactional;
 import java.util.*;
 
 @Service
-public class GenesisDevice {
+public class GenesisService {
 
     CommodityTypeService commodityTypeService;
     CommodityService commodityService;
     UniverseService universeService;
     Boolean bigRedButtonPressed = false;
 
-    public GenesisDevice(CommodityTypeService commodityTypeService, CommodityService commodityService,
+    public GenesisService(CommodityTypeService commodityTypeService, CommodityService commodityService,
             UniverseService universeService) {
         this.commodityTypeService = commodityTypeService;
         this.commodityService = commodityService;
@@ -36,18 +32,23 @@ public class GenesisDevice {
             try {
                 universeService.getUniverse();
             } catch (UniverseNotFoundException ex) {
-                createMinimumCommodities(universeSeedDTO);
-                universeSeedDTO.setCompleted(true);
+                createUniverse(universeSeedDTO);
+                bigRedButtonPressed = true;
                 return universeService.createAndSaveUniverse(universeSeedDTO.getName(), universeSeedDTO);
             }
+            bigRedButtonPressed = true;
         }
-        bigRedButtonPressed = true;
         return getCurrentUniverse();
     }
 
+    private void createUniverse(UniverseSeedDTO universeSeedDTO) {
+        createMinimumCommodities(universeSeedDTO);
+        universeSeedDTO.setCompleted(true);
+    }
+
     private void createMinimumCommodities(UniverseSeedDTO universeSeedDTO) {
-        if (universeSeedDTO.getSkipMinimumCommodities()) {
-            return;
+        if (universeSeedDTO.getSkipMinimumCommodities() != null && universeSeedDTO.getSkipMinimumCommodities()) {
+            universeSeedDTO.setMinimumCommoditiesCompletedSuccessfully(false);
         }
 
         Map<String, CommodityType> basicTypes = createBasicCommodityTypes();
@@ -61,6 +62,8 @@ public class GenesisDevice {
         for (Commodity commodity : commodities) {
             commodityService.saveOrUpdate(commodity);
         }
+
+        universeSeedDTO.setMinimumCommoditiesCompletedSuccessfully(true);
     }
 
     private Map<String, CommodityType> createBasicCommodityTypes() {

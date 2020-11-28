@@ -19,17 +19,18 @@ public class UniverseSeedDTO extends UniverseObjectDTO {
     @ApiModelProperty(example = "false", readOnly = true, accessMode = ApiModelProperty.AccessMode.READ_ONLY)
     private Boolean completed = false;
 
-    @ApiModelProperty(example = "false", readOnly = true, accessMode = ApiModelProperty.AccessMode.READ_ONLY)
-    private Boolean failed = false;
-
     @ApiModelProperty(example = "false", readOnly = true, accessMode = ApiModelProperty.AccessMode.READ_WRITE)
     private Boolean skipMinimumCommodities = false;
+
+    @ApiModelProperty(example = "false", readOnly = true, accessMode = ApiModelProperty.AccessMode.READ_ONLY)
+    private Boolean minimumCommoditiesCompletedSuccessfully = false;
 
     public UniverseSeedDTO(UniverseSeedDTO anotherUniverseSeedDTO) {
         this.dtoClass = anotherUniverseSeedDTO.getDtoClass();
         this.name = anotherUniverseSeedDTO.getName();
         this.completed = anotherUniverseSeedDTO.getCompleted();
-        this.failed = anotherUniverseSeedDTO.getFailed();
+        this.minimumCommoditiesCompletedSuccessfully = anotherUniverseSeedDTO
+                .getMinimumCommoditiesCompletedSuccessfully();
         this.skipMinimumCommodities = anotherUniverseSeedDTO.getSkipMinimumCommodities();
     }
 }
