@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_universe_table
+      author: wcipriano
+      changes:
+        - createTable:
+            tableName: universe
+            columns:
+              - column:
+                  name: name
+                  type: varchar
+              - column:
+                  name: universe_seed
+                  type: jsonb
+              - column:
+                  name: created
+                  type: datetime

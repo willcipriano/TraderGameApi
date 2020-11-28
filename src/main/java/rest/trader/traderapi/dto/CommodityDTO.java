@@ -1,16 +1,22 @@
 package rest.trader.traderapi.dto;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-public class CommodityDTO {
+@EqualsAndHashCode(callSuper = false)
+public class CommodityDTO extends UniverseObjectDTO {
     private String dtoClass = "commodity";
+
+    @ApiModelProperty(notes = "Every Commodity has a unique UUID.")
     private UUID uuid;
-    private UUID commodityTypeUUID;
+
+    @ApiModelProperty(notes = "Name for the Commodity.")
     private String name;
+
+    @ApiModelProperty(notes = "Short description of the Commodity.")
     private String description;
-    private LocalDateTime lastFetched;
 }

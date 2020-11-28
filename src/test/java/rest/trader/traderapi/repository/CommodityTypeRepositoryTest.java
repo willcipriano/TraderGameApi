@@ -33,12 +33,4 @@ class CommodityTypeRepositoryTest extends BaseTraderTest {
         assertThat(result.getDescription()).isEqualTo("Fake Commodity Type Details");
     }
 
-    @Test
-    @Transactional
-    void findByDescription() {
-        createCommodityType();
-        CommodityType result = repository.findByDescription("Fake Commodity Type Details");
-        assertThat(result.getName()).isEqualTo("Fake Commodity Type");
-    }
-
 }

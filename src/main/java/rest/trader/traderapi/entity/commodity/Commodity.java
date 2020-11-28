@@ -15,7 +15,7 @@ public class Commodity {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID uuid;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "type_id")
     private CommodityType type;
 
@@ -24,11 +24,4 @@ public class Commodity {
 
     @Column(nullable = false)
     private String description;
-
-    public UUID getCommodityTypeUUID() {
-        if (Objects.nonNull(this.type)) {
-            return this.type.getUuid();
-        }
-        return null;
-    }
 }

@@ -11,4 +11,5 @@ databaseChangeLog:
       file: db/changelog/tables/db.create-ledger-table.yaml
   - include:
       file: db/changelog/tables/db.create-ledger-entry-table.yaml
-
+  - include:
+      file: db/changelog/tables/db.create-universe-table.yaml
