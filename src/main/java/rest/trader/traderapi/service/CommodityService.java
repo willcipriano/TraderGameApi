@@ -35,7 +35,7 @@ public class CommodityService {
         return repository.findAll(pageable);
     }
 
-    public Commodity getCommodityByUUID(UUID uuid) throws CommodityNotFoundException {
+    public Commodity getCommodityByUUID(UUID uuid) {
         Commodity result = repository.findByUuid(uuid);
         if (result != null) {
             return result;
@@ -43,7 +43,7 @@ public class CommodityService {
         throw new CommodityNotFoundException("Unable to locate commodity by UUID: '", uuid);
     }
 
-    public Commodity getCommodityByName(String name) throws CommodityNotFoundException {
+    public Commodity getCommodityByName(String name) {
         Commodity result = repository.findByName(name);
         if (result != null) {
             return result;
@@ -91,7 +91,7 @@ public class CommodityService {
         Commodity result = repository.findByName(commodity.getName());
         if (result == null) {
             try {
-                CommodityType commodityType = commodityTypeService.getByName(commodity.getType().getName());
+                commodityTypeService.getByName(commodity.getType().getName());
             } catch (CommodityTypeNotFoundException ex) {
                 commodityTypeService.saveOrUpdate(commodity.getType());
             }

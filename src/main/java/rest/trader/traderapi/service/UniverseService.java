@@ -20,10 +20,10 @@ public class UniverseService {
     }
 
     public Universe createAndSaveUniverse(String name, UniverseSeedDTO universeSeed) {
-        Universe universe = Universe.builder().name(name).universeSeed(universeSeed).created(LocalDateTime.now())
+        Universe newUniverse = Universe.builder().name(name).universeSeed(universeSeed).created(LocalDateTime.now())
                 .build();
-
-        save(universe);
+        this.universe = newUniverse;
+        save(newUniverse);
         return universe;
     }
 
@@ -36,7 +36,7 @@ public class UniverseService {
 
             List<Universe> universeList = repository.findAllByCreatedBeforeOrderByCreated(LocalDateTime.now());
 
-            if (universeList.size() <= 0) {
+            if (universeList.isEmpty()) {
                 throw new UniverseNotFoundException("Unable to locate a universe.");
             }
 

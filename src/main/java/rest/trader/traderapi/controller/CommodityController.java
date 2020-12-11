@@ -38,7 +38,7 @@ public class CommodityController {
     }
 
     @ApiOperation(value = "Get commodity by UUID.", response = CommodityDTO.class)
-    @RequestMapping(value = "/uuid/{uuid}", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping(value = "/uuid/{uuid}", produces = "application/json")
     public ResponseEntity<Object> getCommodityByUUID(
             @ApiParam(value = "uuid", required = true, example = "97430852-3d04-47c7-bb29-bea7a8f51ba8") @PathVariable UUID uuid) {
         try {
@@ -54,7 +54,7 @@ public class CommodityController {
     }
 
     @ApiOperation(value = "Get commodity by name.", response = CommodityDTO.class)
-    @RequestMapping(value = "/name/{name}", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping(value = "/name/{name}", produces = "application/json")
     public ResponseEntity<Object> getCommodityByName(
             @ApiParam(value = "name", required = true, example = "Quartz") @PathVariable String name) {
         try {
@@ -70,13 +70,13 @@ public class CommodityController {
     }
 
     @ApiOperation(value = "Get a example commodity.", response = CommodityDTO.class)
-    @RequestMapping(value = "/example", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping(value = "/example", produces = "application/json")
     public ResponseEntity<CommodityDTO> getExampleCommodity() {
         return ResponseEntity.ok().cacheControl(CacheControl.maxAge(31, TimeUnit.DAYS)).body(exampleCommodityDto);
     }
 
     @ApiOperation(value = "Get a list of commodities by type UUID.", response = CommodityDTO.class, responseContainer = "List")
-    @RequestMapping(value = "/type/uuid/{uuid}", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping(value = "/type/uuid/{uuid}", produces = "application/json")
     public ResponseEntity<Object> getCommoditiesByTypeUuid(
             @ApiParam(name = "uuid", required = true, example = "38f3c0a2-344b-4271-9389-1241e2e03c5c") @PathVariable UUID uuid,
             Pageable pageable) {
@@ -103,7 +103,7 @@ public class CommodityController {
                 .body(errorDTO);
     }
 
-    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
+    @GetMapping(produces = "application/json")
     @ApiOperation(value = "Get a list of commodities.", response = CommodityDTO.class, responseContainer = "List")
     public ResponseEntity<List<CommodityDTO>> getCommodities(Pageable pageable) {
         Page<Commodity> results = service.findAll(pageable);

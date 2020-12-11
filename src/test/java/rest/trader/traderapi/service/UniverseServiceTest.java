@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-public class UniverseServiceTest extends BaseTraderTest {
+class UniverseServiceTest extends BaseTraderTest {
 
     @Mock
     UniverseRepository universeRepository;
