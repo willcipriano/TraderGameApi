@@ -29,7 +29,8 @@ import java.util.concurrent.TimeUnit;
 public class CommodityController {
     CommodityService service;
     CommodityDTO exampleCommodityDto;
-    private static final int cacheHours = 3;
+    private static final int CACHEHOURS = 3;
+    private static final String CLASSNAME = "commodity";
 
     @Autowired
     public CommodityController(CommodityService commodityService) {
@@ -42,14 +43,14 @@ public class CommodityController {
     public ResponseEntity<Object> getCommodityByUUID(
             @ApiParam(value = "uuid", required = true, example = "97430852-3d04-47c7-bb29-bea7a8f51ba8") @PathVariable UUID uuid) {
         try {
-            return ResponseEntity.ok().cacheControl(CacheControl.maxAge(cacheHours, TimeUnit.HOURS))
+            return ResponseEntity.ok().cacheControl(CacheControl.maxAge(CACHEHOURS, TimeUnit.HOURS))
                     .body(service.toCommodityDTO(service.getCommodityByUUID(uuid)));
         } catch (CommodityNotFoundException ex) {
-            ApiErrorDTO errorDTO = ApiErrorDTO.builder().dtoClassName("commodity").error(ex.getMessage())
+            ApiErrorDTO errorDTO = ApiErrorDTO.builder().dtoClassName(CLASSNAME).error(ex.getMessage())
                     .updated(LocalDateTime.now()).build();
 
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .cacheControl(CacheControl.maxAge(cacheHours, TimeUnit.HOURS)).body(errorDTO);
+                    .cacheControl(CacheControl.maxAge(CACHEHOURS, TimeUnit.HOURS)).body(errorDTO);
         }
     }
 
@@ -58,14 +59,14 @@ public class CommodityController {
     public ResponseEntity<Object> getCommodityByName(
             @ApiParam(value = "name", required = true, example = "Quartz") @PathVariable String name) {
         try {
-            return ResponseEntity.ok().cacheControl(CacheControl.maxAge(cacheHours, TimeUnit.HOURS))
+            return ResponseEntity.ok().cacheControl(CacheControl.maxAge(CACHEHOURS, TimeUnit.HOURS))
                     .body(service.toCommodityDTO(service.getCommodityByName(name)));
         } catch (CommodityNotFoundException ex) {
-            ApiErrorDTO errorDTO = ApiErrorDTO.builder().dtoClassName("commodity").error(ex.getMessage())
+            ApiErrorDTO errorDTO = ApiErrorDTO.builder().dtoClassName(CLASSNAME).error(ex.getMessage())
                     .updated(LocalDateTime.now()).build();
 
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .cacheControl(CacheControl.maxAge(cacheHours, TimeUnit.HOURS)).body(errorDTO);
+                    .cacheControl(CacheControl.maxAge(CACHEHOURS, TimeUnit.HOURS)).body(errorDTO);
         }
     }
 
@@ -83,23 +84,23 @@ public class CommodityController {
         try {
             List<CommodityDTO> result = service.toCommodityDtos(service.getCommoditiesByTypeUuid(uuid, pageable));
 
-            if (result.size() >= 1) {
-                return ResponseEntity.ok().cacheControl(CacheControl.maxAge(cacheHours, TimeUnit.HOURS)).body(result);
+            if (result.isEmpty()) {
+                return ResponseEntity.ok().cacheControl(CacheControl.maxAge(CACHEHOURS, TimeUnit.HOURS)).body(result);
             }
         } catch (ObjectNotFoundException ex) {
-            ApiErrorDTO errorDTO = ApiErrorDTO.builder().dtoClassName("commodity")
+            ApiErrorDTO errorDTO = ApiErrorDTO.builder().dtoClassName(CLASSNAME)
                     .error("Error fetching commodity list by type: [" + ex.getMessage() + "]")
                     .updated(LocalDateTime.now()).build();
 
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .cacheControl(CacheControl.maxAge(cacheHours, TimeUnit.HOURS)).body(errorDTO);
+                    .cacheControl(CacheControl.maxAge(CACHEHOURS, TimeUnit.HOURS)).body(errorDTO);
         }
 
-        ApiErrorDTO errorDTO = ApiErrorDTO.builder().dtoClassName("commodity")
+        ApiErrorDTO errorDTO = ApiErrorDTO.builder().dtoClassName(CLASSNAME)
                 .error("CommodityType UUID: '" + uuid + "' does not have any associated commodities.")
                 .updated(LocalDateTime.now()).build();
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).cacheControl(CacheControl.maxAge(cacheHours, TimeUnit.HOURS))
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).cacheControl(CacheControl.maxAge(CACHEHOURS, TimeUnit.HOURS))
                 .body(errorDTO);
     }
 
@@ -113,7 +114,7 @@ public class CommodityController {
             CommodityDTO commodityDTO = service.toCommodityDTO(result);
             response.add(commodityDTO);
         }
-        return ResponseEntity.ok().cacheControl(CacheControl.maxAge(cacheHours, TimeUnit.HOURS)).body(response);
+        return ResponseEntity.ok().cacheControl(CacheControl.maxAge(CACHEHOURS, TimeUnit.HOURS)).body(response);
     }
 
 }

@@ -23,8 +23,8 @@ public class GenesisController {
     private static final UniverseSeedDTO emptyUniverseSeed = UniverseSeedDTO.builder().dtoClass("universeSeed")
             .name("Empty Seed").build();
     GenesisService genesisService;
-    private final static UniverseSeedDTO basicSeed = new UniverseSeedDTO(emptyUniverseSeed);
-    private final static int universeCacheDays = 30;
+    private static final UniverseSeedDTO basicSeed = new UniverseSeedDTO(emptyUniverseSeed);
+    private static final int UNIVERSE_CACHE_DAYS = 30;
 
     @Autowired
     public GenesisController(GenesisService genesisService) {
@@ -50,7 +50,7 @@ public class GenesisController {
     public ResponseEntity<Object> getUniverse() {
         try {
             return ResponseEntity.status(HttpStatus.OK)
-                    .cacheControl(CacheControl.maxAge(universeCacheDays, TimeUnit.DAYS))
+                    .cacheControl(CacheControl.maxAge(UNIVERSE_CACHE_DAYS, TimeUnit.DAYS))
                     .body(genesisService.getCurrentUniverse());
         } catch (UniverseNotFoundException ex) {
             ApiErrorDTO apiErrorDTO = ApiErrorDTO.builder().dtoClass("error").dtoClassName("universe")

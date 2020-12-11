@@ -19,8 +19,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@TypeDefs({ @TypeDef(name = "json", typeClass = JsonStringType.class),
-        @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class) })
+@TypeDef(name = "json", typeClass = JsonStringType.class)
+@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class Universe {
     @Id
     private String name;

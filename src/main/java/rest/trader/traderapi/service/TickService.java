@@ -80,7 +80,7 @@ public class TickService {
             latestTick = createFirstTick();
         }
 
-        if (latestTick.getLocked()) {
+        if (Boolean.TRUE.equals(latestTick.getLocked())) {
             log.error("Tick is locked.. aborting.");
             return;
         }

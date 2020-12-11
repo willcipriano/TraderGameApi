@@ -17,5 +17,5 @@ public class UniverseNotFoundException extends ObjectNotFoundException {
 
     public UniverseNotFoundException(String msg) {
         super(msg);
-    };
+    }
 }

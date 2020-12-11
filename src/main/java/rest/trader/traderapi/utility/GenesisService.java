@@ -28,7 +28,7 @@ public class GenesisService {
     }
 
     public Universe pressTheBigRedButton(UniverseSeedDTO universeSeedDTO) {
-        if (!bigRedButtonPressed) {
+        if (Boolean.TRUE.equals(bigRedButtonPressed)) {
             try {
                 universeService.getUniverse();
             } catch (UniverseNotFoundException ex) {
@@ -69,23 +69,27 @@ public class GenesisService {
     private Map<String, CommodityType> createBasicCommodityTypes() {
         Map<String, CommodityType> types = new HashMap<>();
 
+        String primordialStr = "primordial";
+        String elementalStr = "elemental";
+        String primitiveStr = "primitive";
+
         CommodityType elemental = new CommodityType();
-        elemental.setName("elemental");
+        elemental.setName(elementalStr);
         elemental.setDescription(
                 "Pre-human commodities, the value of these items was known before man walked the earth.");
 
         CommodityType primordial = new CommodityType();
-        primordial.setName("primordial");
+        primordial.setName(primordialStr);
         primordial.setDescription(
                 "The most basic of human commodities, requiring the most basic level of effort and planning to collect and process.");
 
         CommodityType primitive = new CommodityType();
-        primitive.setName("primitive");
+        primitive.setName(primitiveStr);
         primitive.setDescription("Primitive commodities, the first true trade goods produced by human kind.");
 
-        types.put("elemental", elemental);
-        types.put("primordial", primordial);
-        types.put("primitive", primitive);
+        types.put(elementalStr, elemental);
+        types.put(primordialStr, primordial);
+        types.put(primitiveStr, primitive);
 
         return types;
     }
@@ -117,7 +121,7 @@ public class GenesisService {
         return commodities;
     }
 
-    public Universe getCurrentUniverse() throws UniverseNotFoundException {
+    public Universe getCurrentUniverse() {
         return universeService.getUniverse();
     }
 

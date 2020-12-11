@@ -17,5 +17,5 @@ public class TickNotFoundException extends ObjectNotFoundException {
 
     public TickNotFoundException(String msg) {
         super(msg);
-    };
+    }
 }
