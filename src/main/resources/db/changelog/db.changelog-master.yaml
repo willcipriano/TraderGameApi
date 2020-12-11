@@ -13,3 +13,5 @@ databaseChangeLog:
       file: db/changelog/tables/db.create-ledger-entry-table.yaml
   - include:
       file: db/changelog/tables/db.create-universe-table.yaml
+  - include:
+      file: db/changelog/tables/db.create-tick-table.yaml

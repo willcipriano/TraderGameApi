@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import rest.trader.traderapi.BaseTraderTest;
-import rest.trader.traderapi.entity.commodity.Commodity;
 import rest.trader.traderapi.entity.commodity.CommodityType;
 
 import javax.transaction.Transactional;
@@ -17,11 +16,12 @@ class CommodityTypeRepositoryTest extends BaseTraderTest {
     @Autowired
     CommodityTypeRepository repository;
 
-    private void createCommodityType() {
+    @Test
+    @Transactional
+    void createCommodityType() {
         CommodityType commodityType = new CommodityType();
         commodityType.setName("Fake Commodity Type");
         commodityType.setDescription("Fake Commodity Type Details");
-
         repository.save(commodityType);
     }
 

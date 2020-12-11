@@ -3,12 +3,13 @@ package rest.trader.traderapi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
-import springfox.documentation.swagger2.mappers.ModelMapper;
 
 import javax.servlet.Filter;
 
 @SpringBootApplication
+@EnableScheduling
 public class TraderApiApplication {
 
     public static void main(String[] args) {

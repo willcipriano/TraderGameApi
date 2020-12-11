@@ -1,6 +1,6 @@
 package rest.trader.traderapi.entity.commodity;
 
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import java.util.UUID;
 
 @Entity
+@Builder
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class CommodityType {
     @Id

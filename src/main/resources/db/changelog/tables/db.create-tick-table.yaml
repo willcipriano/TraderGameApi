@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_tick_table
+      author: wcipriano
+      changes:
+        - createTable:
+            tableName: tick
+            columns:
+              - column:
+                  name: uuid
+                  type: uuid
+              - column:
+                  name: start_time
+                  type: datetime
+              - column:
+                  name: end_time
+                  type: datetime
+              - column:
+                  name: completed
+                  type: boolean
+              - column:
+                  name: active
+                  type: boolean
+              - column:
+                  name: locked
+                  type: boolean
+              - column:
+                  name: tick
+                  type: bigint
+              - column:
+                  name: details
+                  type: jsonb

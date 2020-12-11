@@ -29,5 +29,6 @@ public class Universe {
     @Column(columnDefinition = "json")
     private UniverseSeedDTO universeSeed;
 
+    @Column
     private LocalDateTime created;
 }

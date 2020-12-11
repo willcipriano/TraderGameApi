@@ -20,7 +20,8 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping(path = "/v-1/genesis")
 public class GenesisController {
 
-    private static final UniverseSeedDTO emptyUniverseSeed = UniverseSeedDTO.builder().dtoClass("universeSeed").name("Empty Seed").build();
+    private static final UniverseSeedDTO emptyUniverseSeed = UniverseSeedDTO.builder().dtoClass("universeSeed")
+            .name("Empty Seed").build();
     GenesisService genesisService;
     private final static UniverseSeedDTO basicSeed = new UniverseSeedDTO(emptyUniverseSeed);
     private final static int universeCacheDays = 30;
