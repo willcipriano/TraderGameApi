@@ -30,11 +30,9 @@ class UniverseServiceTest extends BaseTraderTest {
 
     @BeforeEach
     void setMockOutput() {
-        when(universeRepository.findAllByCreatedBeforeOrderByCreated(any())).thenReturn(Collections.singletonList(Universe.builder()
-        .created(LocalDateTime.now())
-        .name("Mock Universe")
-        .universeSeed(defaultUniverseSeed())
-        .build()));
+        when(universeRepository.findAllByCreatedBeforeOrderByCreated(any()))
+                .thenReturn(Collections.singletonList(Universe.builder().created(LocalDateTime.now())
+                        .name("Mock Universe").universeSeed(defaultUniverseSeed()).build()));
 
         when(universeRepository.save(any())).thenAnswer(new Answer<Universe>() {
             @Override
@@ -56,11 +54,5 @@ class UniverseServiceTest extends BaseTraderTest {
         Universe newlyCreatedUniverse = universeService.createAndSaveUniverse("New Universe", defaultUniverseSeed());
         assertThat(newlyCreatedUniverse.getName()).isEqualTo("New Universe");
     }
-
-
-
-
-
-
 
 }

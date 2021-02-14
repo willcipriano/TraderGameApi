@@ -2,9 +2,6 @@ spring:
   application:
     name: traderAPI
 
-  security:
-    spring.security.
-
   datasource:
     platform: org.hibernate.dialect.PostgreSQLDialect
     url: jdbc:postgresql://postgres_db:5432/trader

@@ -17,6 +17,8 @@ services:
   trader_rest_api:
     build:
       context: .
+      args:
+        - ALPHA_API_KEY=$ALPHA_API_KEY
     depends_on:
       - postgres_db
     ports:

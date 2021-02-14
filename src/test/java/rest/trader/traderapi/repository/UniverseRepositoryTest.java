@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import rest.trader.traderapi.BaseTraderTest;
 import rest.trader.traderapi.entity.Universe;
 
-
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -36,4 +35,3 @@ class UniverseRepositoryTest extends BaseTraderTest {
     }
 
 }
-

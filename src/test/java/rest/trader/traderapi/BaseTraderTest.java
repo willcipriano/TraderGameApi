@@ -55,7 +55,8 @@ public class BaseTraderTest {
     }
 
     public Universe createUniverse(String name, UniverseSeedDTO universeSeedDTO) {
-        Universe newUniverse = Universe.builder().name(name).universeSeed(universeSeedDTO).created(LocalDateTime.now()).build();
+        Universe newUniverse = Universe.builder().name(name).universeSeed(universeSeedDTO).created(LocalDateTime.now())
+                .build();
         return universeRepository.save(newUniverse);
     }
 

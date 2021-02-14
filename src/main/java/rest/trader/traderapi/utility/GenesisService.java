@@ -20,6 +20,9 @@ public class GenesisService {
     UniverseService universeService;
     Boolean bigRedButtonPressed = false;
 
+    private static final String PRIMORDIAL_STR = "primordial";
+    private static final String ELEMENTAL_STR = "elemental";
+
     public GenesisService(CommodityTypeService commodityTypeService, CommodityService commodityService,
             UniverseService universeService) {
         this.commodityTypeService = commodityTypeService;
@@ -69,17 +72,15 @@ public class GenesisService {
     private Map<String, CommodityType> createBasicCommodityTypes() {
         Map<String, CommodityType> types = new HashMap<>();
 
-        String primordialStr = "primordial";
-        String elementalStr = "elemental";
         String primitiveStr = "primitive";
 
         CommodityType elemental = new CommodityType();
-        elemental.setName(elementalStr);
+        elemental.setName(ELEMENTAL_STR);
         elemental.setDescription(
                 "Pre-human commodities, the value of these items was known before man walked the earth.");
 
         CommodityType primordial = new CommodityType();
-        primordial.setName(primordialStr);
+        primordial.setName(PRIMORDIAL_STR);
         primordial.setDescription(
                 "The most basic of human commodities, requiring the most basic level of effort and planning to collect and process.");
 
@@ -87,8 +88,8 @@ public class GenesisService {
         primitive.setName(primitiveStr);
         primitive.setDescription("Primitive commodities, the first true trade goods produced by human kind.");
 
-        types.put(elementalStr, elemental);
-        types.put(primordialStr, primordial);
+        types.put(ELEMENTAL_STR, elemental);
+        types.put(PRIMORDIAL_STR, primordial);
         types.put(primitiveStr, primitive);
 
         return types;
@@ -107,16 +108,16 @@ public class GenesisService {
 
         commodities.add(createCommodity("mud",
                 "Soil, silt or clay mixed with water. Typically forms after rainfall or in proximity to water sources.",
-                commodityTypes.get("elemental")));
+                commodityTypes.get(ELEMENTAL_STR)));
         commodities.add(createCommodity("rainwater",
                 "Water fallen as rain that has not collected soluble matter from the soil.",
-                commodityTypes.get("elemental")));
+                commodityTypes.get(ELEMENTAL_STR)));
         commodities.add(createCommodity("tinder",
                 "Any dry substance that readily takes fire from a spark. Contains variously cedar bark, cattail fluff etc.",
-                commodityTypes.get("primordial")));
+                commodityTypes.get(PRIMORDIAL_STR)));
         commodities
                 .add(createCommodity("kindling", "Easily combustible small sticks or twigs used for starting a fire.",
-                        commodityTypes.get("primordial")));
+                        commodityTypes.get(PRIMORDIAL_STR)));
 
         return commodities;
     }
